@@ -1,43 +1,19 @@
 # -*- coding: utf-8 -*-
 """
 Created on Tue Feb 16 09:35:14 2021
-PyBoss
+PyBoss_YangShi
 @author: YangShi
-
-Your script will need to do the following:
-* Import the `employee_data.csv` file, which currently holds employee records like the below:
-```csv
-Emp ID,Name,DOB,SSN,State
-214,Sarah Simpson,1985-12-04,282-01-8166,Florida
-15,Samantha Lara,1993-09-08,848-80-7526,Colorado
-411,Stacy Charles,1957-12-20,658-75-8526,Pennsylvania
-```
-* Then convert and export the data to use the following format instead:
-
-```csv
-Emp ID,First Name,Last Name,DOB,SSN,State
-214,Sarah,Simpson,12/04/1985,***-**-8166,FL
-15,Samantha,Lara,09/08/1993,***-**-7526,CO
-411,Stacy,Charles,12/20/1957,***-**-8526,PA
-```
-
-* In summary, the required conversions are as follows:
-
-  * The `Name` column should be split into separate `First Name` and `Last Name` columns.
-
-  * The `DOB` data should be re-written into `MM/DD/YYYY` format.
-
-  * The `SSN` data should be re-written such that the first five numbers are hidden from view.
-
-  * The `State` data should be re-written as simple two-letter abbreviations.
-
-* Special Hint: You may find this link to be helpful—[Python Dictionary for State Abbreviations](https://gist.github.com/afhaque/29f0f4f37463c447770517a6c17d08f5).
-
 """
-import os, csv
+import os, csv,datetime
 
 employee_csv=os.path.join("r","..","employee_data.csv")
 output_csv=os.path.join("r","..","formatted_data.csv")
+emp_id=[]
+first_name=[]
+last_name=[]
+dob=[]
+ssn=[]
+state=[]
 us_state_abbrev = {
     'Alabama': 'AL',
     'Alaska': 'AK',
@@ -90,65 +66,25 @@ us_state_abbrev = {
     'Wisconsin': 'WI',
     'Wyoming': 'WY',
 }
+
 with open (employee_csv) as csvfile:
-    csvreader=csv.reader(csvfile, delimiter=",")
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    csvreader=csv.reader(csvfile, delimiter=",")    #read csv file
+    csvheader=next(csvreader)                       #find header
+    for row in csvreader:
+        emp_id.append(row[0])
+        x=row[1].split(' ')
+        first_name.append(x[0])
+        last_name.append(x[1])
+        dob.append(datetime.datetime.strptime(row[2], '%Y-%m-%d').strftime('%m/%d/%Y'))
+        y=row[3].split("-")
+        ssn.append("***-**-" + y[2])
+        state.append(us_state_abbrev[row[4]])
+
+with open(output_csv,"w",newline="") as csvfile:
+    #initialize csv.writer
+    csvwriter=csv.writer(csvfile,delimiter=",")
+    #writer column headers
+    csvwriter.writerow(["Employee ID","First Name","Last Name","DOB","SSN","State"])
+    for i in range(len(emp_id)):
+        csvwriter.writerow([emp_id[i], first_name[i],last_name[i],dob[i],ssn[i], state[i]])
+
