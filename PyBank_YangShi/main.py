@@ -11,7 +11,7 @@ month_count=0
 budget_sum=0
 budget_max=0    #max profit
 budget_min=0    #max loss
-output_path=os.path.join("r","..", "analysis","budget_analysis.txt")
+output_txt=os.path.join("r","..", "analysis","budget_analysis.txt")
 
 with open (budget_csv) as csvfile:
     csvreader=csv.reader(csvfile,delimiter=",")
@@ -26,10 +26,9 @@ with open (budget_csv) as csvfile:
         month_count+=1              #find total number of months
         budget_sum=budget_sum+float(row[1])        #find total profit/losses
 if month_count>0:
-    budget_average=round(float(budget_sum/month_count),2)     #cal the average
+    budget_average=round(float(budget_sum/month_count),2)     #calc the average
 
-#output to terminal
-    
+#output to terminal 
 print("Financial Analysis")
 print("---------------------------------------")
 print(f"Total months:  {month_count}")
@@ -40,7 +39,7 @@ print(f"Greasted Decrease in Profits: $ {month_min} {budget_min}")
 print("---------------------------------------")
 
 #output to text file
-with open (output_path, "w") as text:
+with open (output_txt, "w") as text:
     text.write("Financial Analysis \n -------------------------------\n Total months: ")
     text.write(str(month_count))
     text.write("\n Total $" )
@@ -56,5 +55,3 @@ with open (output_path, "w") as text:
     text.write("  ($")
     text.write(str( budget_min))
     text.write(") \n -------------------------------")
-
-
