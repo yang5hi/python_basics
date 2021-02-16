@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Feb 16 09:50:25 2021
+PyParagraph
+@author: YoYo
 # PyParagraph
 
 ![Language](Images/language.png)
@@ -39,3 +44,6 @@ Average Sentence Length: 24.0
 import re
 re.split("(?<=[.!?]) +", paragraph)
 ```
+
+"""
+
