@@ -75,9 +75,10 @@ with open (employee_csv) as csvfile:
         x=row[1].split(' ')
         first_name.append(x[0])
         last_name.append(x[1])
+        #change DOB format
         dob.append(datetime.datetime.strptime(row[2], '%Y-%m-%d').strftime('%m/%d/%Y'))
         y=row[3].split("-")
-        ssn.append("***-**-" + y[2])
+        ssn.append("***-**-" + y[2])            #change SSN format
         state.append(us_state_abbrev[row[4]])
 
 with open(output_csv,"w",newline="") as csvfile:
@@ -85,6 +86,7 @@ with open(output_csv,"w",newline="") as csvfile:
     csvwriter=csv.writer(csvfile,delimiter=",")
     #writer column headers
     csvwriter.writerow(["Employee ID","First Name","Last Name","DOB","SSN","State"])
+    #output the data using for loop
     for i in range(len(emp_id)):
         csvwriter.writerow([emp_id[i], first_name[i],last_name[i],dob[i],ssn[i], state[i]])
 
