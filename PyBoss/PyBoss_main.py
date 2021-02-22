@@ -14,7 +14,7 @@ last_name=[]
 dob=[]
 ssn=[]
 state=[]
-us_state_abbrev = {
+us_state_abbrev = {     #dictionary of the state abbrevations
     'Alabama': 'AL',
     'Alaska': 'AK',
     'Arizona': 'AZ',
