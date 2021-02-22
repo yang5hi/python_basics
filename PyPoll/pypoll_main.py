@@ -32,8 +32,8 @@ print("--------------------------------------------------")
 #calcuate the election results and put into lists
 for i in range(Num_of_candidate):
     candidate_votes.append(votes.count(candidates[i]))      #count the votes
-    candidate_percent.append(round(candidate_votes[i]/total_votes*100,3))   #calculate percentage
-    print(f"{candidates[i]} : {candidate_percent[i]}%  ({candidate_votes[i]})")
+    candidate_percent.append(round(candidate_votes[i]*100/total_votes,3))   #calculate percentage
+    print(f"{candidates[i]} : {candidate_percent[i]:.3f}%  ({candidate_votes[i]})")
 #find the winner
 winner=candidates[candidate_votes.index(max(candidate_votes))]
 print("--------------------------------------------------")
