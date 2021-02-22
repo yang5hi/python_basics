@@ -38,7 +38,7 @@ print(f"Greatest Increase in Profits: $ {month_max} {budget_max}")
 print(f"Greasted Decrease in Profits: $ {month_min} {budget_min}")
 print("---------------------------------------")
 
-#output to text file
+#output to text file called budget_analysis.txt
 with open (output_txt, "w") as text:
     text.write("Financial Analysis \n -------------------------------\n Total months: ")
     text.write(str(month_count))
