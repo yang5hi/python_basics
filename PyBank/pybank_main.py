@@ -26,16 +26,16 @@ with open (budget_csv) as csvfile:
         month_count+=1              #find total number of months
         budget_sum=budget_sum+float(row[1])        #find total profit/losses
 if month_count>0:
-    budget_average=round(float(budget_sum/month_count),2)     #calc the average
+    budget_average=float(budget_sum/month_count)     #calc the average
 
 #output to terminal 
 print("Financial Analysis")
 print("---------------------------------------")
 print(f"Total months:  {month_count}")
-print(f"Total $ {budget_sum}")
-print(f"Average Change: $  {budget_average}")
-print(f"Greatest Increase in Profits: $ {month_max} {budget_max}")
-print(f"Greasted Decrease in Profits: $ {month_min} {budget_min}")
+print(f"Total $ {budget_sum:.2f}")
+print(f"Average Change: $  {budget_average:.2f}")
+print(f"Greatest Increase in Profits: $ {month_max} {budget_max:.2f}")
+print(f"Greasted Decrease in Profits: $ {month_min} {budget_min:.2f}")
 print("---------------------------------------")
 
 #output to text file called budget_analysis.txt
@@ -45,11 +45,11 @@ with open (output_txt, "w") as text:
     text.write("\n Total $" )
     text.write(str(budget_sum))
     text.write("\n Average Change: $" )
-    text.write(str(budget_average))
+    text.write(str(round(budget_average,2)))
     text.write("\n Greatest Increase in Profits: ")
     text.write(month_max)
     text.write("  ($")
-    text.write(str( budget_max))
+    text.write(str(budget_max))
     text.write(") \n Greatest Decrease in Profits: ")
     text.write(month_min)
     text.write("  ($")
