@@ -9,4 +9,12 @@ Four projects were submitted undet this python challenge assignment
     
     The user defined function is used in the pyParagraph python code
     
-    
+    The other functions used were from the python 3.8 package, which includes but not limit to:
+        list.append
+        set(list)
+        list(set)
+        len(list)
+        for loop
+        /n to end a line
+        float(str) 
+        if statement
