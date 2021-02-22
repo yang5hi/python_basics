@@ -18,3 +18,9 @@ Four projects were submitted undet this python challenge assignment
         /n to end a line
         float(str) 
         if statement
+        dictionary
+        str.split("")
+        datetime.datetime.strptime(str,"%y-%m-%d").strftime(%m/%d/%Y)
+            string format time module
+            which needs to be imported as datetime
+        
